@@ -14,6 +14,7 @@
 			</RouterLink>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
 					<template v-if="AuthService.hasAuth()">
 						<li class="nav-item">
 							<RouterLink class="nav-link" to="/tasks">
@@ -26,6 +27,7 @@
 							</button>
 						</li>
 					</template>
+
 					<template v-else>
 						<li class="nav-item">
 							<RouterLink class="nav-link" to="/login">
@@ -38,6 +40,7 @@
 							</RouterLink>
 						</li>
 					</template>
+
 					<li class="nav-item">
 						<RouterLink class="nav-link" to="/about">
 							<i class="fa-solid fa-circle-info"></i> About

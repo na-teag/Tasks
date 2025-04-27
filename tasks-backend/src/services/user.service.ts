@@ -37,7 +37,7 @@ export class UserService {
             }
 
             return {
-                name: user?.email,
+                username: user?.username,
                 // @ts-ignore
                 access: jwt.sign(payload, tokenSecret!, { expiresIn: accessTTL }),
                 // @ts-ignore

@@ -1,27 +1,27 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+	import { ref } from 'vue';
+	import { useRouter } from 'vue-router';
 
-import { AuthService } from '@/services/auth.service';
-import { MainService } from '@/services/main.service';
+	import { AuthService } from '@/services/auth.service';
+	import { MainService } from '@/services/main.service';
 
-const username = ref<string>('')
-const email = ref<string>('')
-const password = ref<string>('')
-const router = useRouter()
+	const username = ref<string>('')
+	const email = ref<string>('')
+	const password = ref<string>('')
+	const router = useRouter()
 
-function doRegister(e: Event) {
-	e.preventDefault()
+	function doRegister(e: Event) {
+		e.preventDefault()
 
-	if (username.value == '' || email.value == '' || password.value == '') return
+		if (username.value == '' || email.value == '' || password.value == '') return
 
-	MainService.register(username.value, email.value, password.value)
-		.then(rsp => {
-			AuthService.createAuth(rsp.data)
-			router.push('/login')
-		})
-		.catch(e => alert("username or email already exists"))
-}
+		MainService.register(username.value, email.value, password.value)
+			.then(rsp => {
+				AuthService.createAuth(rsp.data)
+				router.push('/login')
+			})
+			.catch(e => alert("username or email already exists"))
+	}
 </script>
 
 <template>

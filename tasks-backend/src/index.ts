@@ -7,6 +7,7 @@ import morgan from 'morgan'
 import { AppDataSource } from './db'
 import { UserRoute } from './routes/user.route'
 import { UserService } from './services/user.service'
+import { TaskRoute } from './routes/task.route'
 
 const app = express()
 app.use(express.json())
@@ -15,6 +16,7 @@ app.use(morgan('tiny'))
 
 app.use(UserService.verifyToken)
 app.use('/api/user', UserRoute)
+app.use('/api/task', TaskRoute)
 
 app.get('*', (req, res) => {
     res.status(404).json({
