@@ -1,7 +1,7 @@
 import { configDotenv } from "dotenv";
 import { DataSource } from "typeorm";
-import { User } from "./src/entities/User";
-import { Task } from "./src/entities/Task";
+import { User } from "./entities/User.ts";
+import { Task } from "./entities/Task.ts";
 
 configDotenv()
 export const AppDataSource = new DataSource({
