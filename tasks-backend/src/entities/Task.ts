@@ -23,8 +23,8 @@ export class Task {
   @Column("text", { name: "description", nullable: true })
   description: string | null;
 
-  @Column("enum", { name: "status", enum: ["pending", "in_progress", "done"] })
-  status: "pending" | "in_progress" | "done";
+  @Column("enum", { name: "status", enum: ["pending", "in progress", "done"] })
+  status: "pending" | "in progress" | "done";
 
   @Column("datetime", {
     name: "created_at",

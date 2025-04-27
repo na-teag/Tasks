@@ -30,14 +30,15 @@ export class UserService {
     static async login(model: LoginModel) {
         const user = await this.getUserByUsername(model.username)
 
-        if (await bcrypt.compare(model.password, user!.password)) {
+        if (user && await bcrypt.compare(model.password, user.password)) {
             const payload = {
-                id: user?.userId,
-                email: user?.email
+                id: user.userId,
+                email: user.email
             }
 
             return {
-                username: user?.username,
+                userId: user.userId,
+                username: user.username,
                 // @ts-ignore
                 access: jwt.sign(payload, tokenSecret!, { expiresIn: accessTTL }),
                 // @ts-ignore

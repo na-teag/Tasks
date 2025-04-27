@@ -8,7 +8,6 @@ export function useLogout() {
         if (e != undefined) {
             alert(e.message)
         }
-
         AuthService.removeAuth()
         router.push('/user/login')
     }

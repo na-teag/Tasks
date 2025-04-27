@@ -5,6 +5,7 @@ import RegisterView from "@/views/RegisterView.vue";
 import AboutView from "@/views/AboutView.vue";
 import TaskView from "@/views/TaskView.vue";
 import ModifyTask from "@/views/ModifyTask.vue";
+import CreateTask from "@/views/CreateTask.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +39,11 @@ const router = createRouter({
       path: '/task/modify/:id',
       name: 'modify',
       component: ModifyTask,
+    },
+    {
+      path: '/task/create',
+      name: 'create',
+      component: CreateTask,
     },
     {
       path: '/:catchAll(.*)',

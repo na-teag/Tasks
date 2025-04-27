@@ -2,8 +2,12 @@
 	import { RouterLink } from 'vue-router'
 	import { AuthService } from '@/services/auth.service';
 	import { useLogout } from '@/hooks/logout.hook';
+	import Router from "@/router";
 
-	const logout = useLogout()
+	const logout = () => {
+		useLogout()
+		//Router.push('/home')
+	}
 </script>
 
 <template>

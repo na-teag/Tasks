@@ -20,7 +20,7 @@ create table task
     user_id     int unsigned                            not null,
     title       varchar(255)                            not null,
     description text                                    null,
-    status      ENUM ('pending', 'in_progress', 'done') not null,
+    status      ENUM ('pending', 'in progress', 'done') not null,
     created_at  datetime default CURRENT_TIMESTAMP      not null,
     updated_at  datetime                                null on update CURRENT_TIMESTAMP,
     constraint task_user_user_id_fk

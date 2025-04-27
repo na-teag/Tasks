@@ -43,7 +43,7 @@ export class TaskService {
             userId: userId,
             title: model.title,
             description: model.description,
-            status: 'pending'
+            status: model.status
         })
     }
 
@@ -62,6 +62,6 @@ export class TaskService {
     static async deleteTask(userId: number, TaskId: number) {
         const test = await repo.delete({ userId: userId, taskId: TaskId })
         if (test.affected === 0)
-            throw new Error("TASK_NOT_FOUND")
+            throw new Error("TASK_NOT_FOUND user="+ userId+ " task="+TaskId)
     }
 }

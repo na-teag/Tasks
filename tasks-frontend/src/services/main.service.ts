@@ -1,5 +1,6 @@
 import axios, { AxiosError, type AxiosResponse } from "axios"
 import { AuthService } from "./auth.service"
+import Router from "@/router";
 
 const client = axios.create({
     baseURL: 'https://localhost:5000/api',
@@ -57,6 +58,7 @@ export class MainService {
         }
 
         if (rsp == undefined) {
+            Router.push('/login')
             throw new Error('BACKEND_UNREACHABLE')
         }
 

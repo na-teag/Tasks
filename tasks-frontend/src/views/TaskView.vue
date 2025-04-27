@@ -18,13 +18,14 @@ const logout = useLogout()
 		if (!confirm(`Are you sure you want to delete ${task.title} ?`)) return
 		TaskService.deleteTask(task.taskId)
 			.then(rsp => tasks.value = tasks.value?.filter(t => t.taskId !== task.taskId))
-			.catch(e => logout(e))
+			//.catch(e => logout(e))
 	}
 </script>
 
 <template>
 	<div class="container">
-		<h3 style="margin-bottom: 20px">Tasks</h3>
+		<h3>Tasks</h3>
+		<button class="btn btn-sm btn-primary" @click="Router.push('/task/create')">Create a task</button>
 		<div v-if="tasks && tasks.length===0">
 			<p style="margin: 100px">You do not have any task for the moment.</p>
 		</div>
@@ -32,6 +33,7 @@ const logout = useLogout()
 			<div class="card mb-3" v-for="task of tasks" :key="task.taskId">
 				<div class="cursor card-body" @click="Router.push(`/task/modify/${task.taskId}`)">
 					<h5 class="card-title">{{ task.title }}</h5>
+					<p>{{ task.status }}</p>
 					<p class="card-text" v-if="task.description">{{ task.description }}</p>
 				</div>
 				<div class="delete" v-if="task.status === TaskStatus.DONE">
@@ -60,6 +62,11 @@ const logout = useLogout()
 		justify-content: center;
 		align-items: center;
 		margin-right: 15px;
+	}
+
+	.btn {
+		margin-left: 5%;
+		margin-bottom: 10px;
 	}
 
 	.cursor:hover {
