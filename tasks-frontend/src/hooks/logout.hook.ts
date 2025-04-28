@@ -9,6 +9,6 @@ export function useLogout() {
             alert(e.message)
         }
         AuthService.removeAuth()
-        router.push('/user/login')
+        router.push('/login')
     }
 }

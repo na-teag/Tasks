@@ -1,13 +1,12 @@
 <script setup lang="ts">
 	import { RouterLink } from 'vue-router'
 	import { AuthService } from '@/services/auth.service';
+	import {computed} from "vue";
 	import { useLogout } from '@/hooks/logout.hook';
-	import Router from "@/router";
+	const isAuthenticated = computed(() => AuthService.hasAuth())
 
-	const logout = () => {
-		useLogout()
-		//Router.push('/home')
-	}
+	const logout = useLogout()
+
 </script>
 
 <template>
@@ -19,7 +18,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-					<template v-if="AuthService.hasAuth()">
+					<template v-if="isAuthenticated">
 						<li class="nav-item">
 							<RouterLink class="nav-link" to="/tasks">
 								<i class="fa-solid fa-house"></i> Tasks
